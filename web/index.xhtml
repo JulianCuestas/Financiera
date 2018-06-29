@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Cotizaciones</title>
+        <!-- Bootstrap Core Css -->
+        <link href="#{request.contextPath}/resources/bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h1>GENERACIÓN DE COTIZACIÓN</h1>
+            <div class="container-fluid">
+                <h:messages id="messages" globalOnly="true" fatalClass="alert alert-danger" errorClass="alert alert-danger" warnClass="alert alert-warning" infoClass="alert alert-info" showDetail="true" showSummary="true" />
+                <div class="container">
+                    <h:form class="form-horizontal">
+                        <h:panelGrid columns="5">
+                            <h:outputLabel class="control-label" for="montoSolicitado" value="Monto a Solicitar"/>
+                            <h:inputText class="form-control" id="montoSolicitado" value="#{cotizacionBean.montoSolicitado}" pt:placeholder="0.0" />
+
+                            <h:commandButton class="btn btn-success btn-block" actionListener="#{cotizacionBean.generarCotizacion()}" value="Cotizar" />
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+                <br/>
+                <table class="table table-bordered table-responsive table-hover">
+                    <tr>
+                        <th>Socio que realiza el préstamo</th>
+                        <th>Cuota Mensual</th> 
+                        <th>Pago total del crédito</th>
+                        <th>Tasa de interés mensual</th>
+                    </tr>
+                    <tr>
+                        <td>#{cotizacionBean.nombreSocio}</td>
+                        <td style="text-align: center;">
+                            <h:outputText value="$ #{cotizacionBean.valorCuotaMensual}">
+                                <f:convertNumber currencySymbol="$" groupingUsed="true" maxFractionDigits="2" type="currency" locale="es_CO" />
+                            </h:outputText>
+                        </td> 
+                        <td style="text-align: center;">
+                            <h:outputText value="$ #{cotizacionBean.pagoTotalCredito}">
+                                <f:convertNumber currencySymbol="$" groupingUsed="true" maxFractionDigits="2" type="currency" locale="es_CO" />
+                            </h:outputText>
+                        </td>
+                        <td style="text-align: center;">#{cotizacionBean.tasaInteres}%</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </h:body>
+</html>
+

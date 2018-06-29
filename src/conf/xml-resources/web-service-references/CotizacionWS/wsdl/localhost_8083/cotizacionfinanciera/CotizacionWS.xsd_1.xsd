@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://ws.cotizacion/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.cotizacion/">
+
+<xs:element name="generarCotizacion" type="tns:generarCotizacion" />
+
+<xs:element name="generarCotizacionResponse" type="tns:generarCotizacionResponse" />
+
+<xs:complexType name="generarCotizacion">
+<xs:sequence>
+<xs:element name="montoSolicitado" type="xs:double" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="generarCotizacionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:rtaCotizacionDTO" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="rtaCotizacionDTO">
+<xs:sequence>
+<xs:element name="codigoRespuesta" type="xs:string" minOccurs="0" />
+<xs:element name="mensajeRespuesta" type="xs:string" minOccurs="0" />
+<xs:element name="nombreSocio" type="xs:string" minOccurs="0" />
+<xs:element name="pagoTotalCredito" type="xs:string" minOccurs="0" />
+<xs:element name="tasaInteres" type="xs:string" minOccurs="0" />
+<xs:element name="valorCuotaMensual" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
